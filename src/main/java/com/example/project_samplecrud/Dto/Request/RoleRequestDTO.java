@@ -11,5 +11,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class RoleRequestDTO {
     private UUID userId;
+    private UUID roleId;
     private String roleName;
 }

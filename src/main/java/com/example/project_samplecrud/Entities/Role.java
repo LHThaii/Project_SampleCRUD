@@ -23,7 +23,7 @@ public class Role extends AuditedEntityBase{
     @Column(name = "role_name")
     private String roleName;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "role")
     @JsonBackReference
     private Set<User> users;
 

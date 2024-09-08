@@ -30,6 +30,9 @@ public class User extends AuditedEntityBase{
     @Column(name = "password")
     private String password;
 
+    @Column(name = "full_name")
+    private String fullname;
+
     @Column(name = "enable", columnDefinition = "boolean default true")
     private Boolean enable;
 
@@ -39,7 +42,7 @@ public class User extends AuditedEntityBase{
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
     @JsonManagedReference
-    private Set<Role> roles;
+    private Set<Role>role;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")

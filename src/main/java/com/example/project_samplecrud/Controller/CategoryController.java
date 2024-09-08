@@ -1,13 +1,12 @@
 package com.example.project_samplecrud.Controller;
 
 import com.example.project_samplecrud.Dto.Request.CategoryRequestDTO;
-import com.example.project_samplecrud.Dto.Respone.CategoryResponeDTO;
-import com.example.project_samplecrud.Dto.Respone.ResponeObjectDTO;
+import com.example.project_samplecrud.Dto.Respone.CategoryResponseDTO;
+import com.example.project_samplecrud.Dto.Respone.ResponseObjectDTO;
 import com.example.project_samplecrud.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -25,25 +24,25 @@ public class CategoryController {
     }
 
     @GetMapping("/view")
-    ResponseEntity<ResponeObjectDTO> getAllCategory() {
-        return ResponseEntity.status(HttpStatus.OK).body(new ResponeObjectDTO("OK", "Category query success", categoryService.findAll()));
+    ResponseEntity<ResponseObjectDTO> getAllCategory() {
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseObjectDTO("OK", "Category query success", categoryService.findAll()));
     }
 
     @PostMapping("/insert")
 
-    ResponseEntity<CategoryResponeDTO> insertCategory(@RequestBody CategoryRequestDTO categoryRequest) {
+    ResponseEntity<CategoryResponseDTO> insertCategory(@RequestBody CategoryRequestDTO categoryRequest) {
         return categoryService.insertCategory(categoryRequest);
     }
 
     @PutMapping("/update")
 
-    ResponseEntity<CategoryResponeDTO> updateCategory(@RequestBody CategoryRequestDTO categoryRequest){
+    ResponseEntity<CategoryResponseDTO> updateCategory(@RequestBody CategoryRequestDTO categoryRequest){
         return categoryService.updateCategory(categoryRequest);
     }
 
     @DeleteMapping("/delete/{categoryId}")
 
-    ResponseEntity<ResponeObjectDTO> deleteCategory(@PathVariable(name = "categoryId") UUID categoryId){
+    ResponseEntity<ResponseObjectDTO> deleteCategory(@PathVariable(name = "categoryId") UUID categoryId){
         return categoryService.deleteCategory(categoryId);
     }
 }
