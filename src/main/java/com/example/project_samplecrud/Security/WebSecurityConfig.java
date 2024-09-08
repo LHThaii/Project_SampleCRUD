@@ -37,7 +37,7 @@ public class WebSecurityConfig {
                         })
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/user/auth/**").permitAll()
+                        .requestMatchers("/api/v1/user/**").permitAll()
                         .requestMatchers("/api/v1/category/**").permitAll() // Ensure this line is correct
                         .anyRequest().authenticated()
                 )
